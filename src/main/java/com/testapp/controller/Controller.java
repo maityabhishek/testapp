@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.testapp.dao.UserRepo;
+import com.testapp.model.ResGetAll;
 import com.testapp.model.User;
 
 @RestController
@@ -23,7 +24,7 @@ public class Controller {
 	@RequestMapping(path="/viewall", method=RequestMethod.GET)
 	public ResponseEntity<?> viewall()
 	{
-		return new ResponseEntity<>(userdao.findAll(),HttpStatus.OK);
+		return new ResponseEntity<>(new ResGetAll(userdao.findAll()),HttpStatus.OK);
 	}
 	@RequestMapping(path="/add", method=RequestMethod.POST)
 	public ResponseEntity<?> adduser(@RequestBody User user)
