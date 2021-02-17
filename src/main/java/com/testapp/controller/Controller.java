@@ -24,6 +24,11 @@ public class Controller {
 	@RequestMapping(path="/viewall", method=RequestMethod.GET)
 	public ResponseEntity<?> viewall()
 	{
+		return new ResponseEntity<>(userdao.findAll(),HttpStatus.OK);
+	}
+	@RequestMapping(path="/viewalldata", method=RequestMethod.GET)
+	public ResponseEntity<?> viewallnew()
+	{
 		return new ResponseEntity<>(new ResGetAll(userdao.findAll()),HttpStatus.OK);
 	}
 	@RequestMapping(path="/add", method=RequestMethod.POST)
