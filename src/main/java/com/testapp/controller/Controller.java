@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.testapp.dao.UserRepo;
 import com.testapp.model.ResGetAll;
+import com.testapp.model.ResGetID;
 import com.testapp.model.User;
 
 @RestController
@@ -25,6 +26,10 @@ public class Controller {
 	public ResponseEntity<?> viewall()
 	{
 		return new ResponseEntity<>(userdao.findAll(),HttpStatus.OK);
+	}
+	public ResponseEntity<?> viewbyId(@PathVariable int uid)
+	{
+		return new ResponseEntity<>(new ResGetID(userdao.findById(uid)),HttpStatus.OK);
 	}
 	@RequestMapping(path="/viewalldata", method=RequestMethod.GET)
 	public ResponseEntity<?> viewallnew()
