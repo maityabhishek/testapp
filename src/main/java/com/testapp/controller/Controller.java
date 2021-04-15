@@ -27,7 +27,8 @@ public class Controller {
 	{
 		return new ResponseEntity<>(userdao.findAll(),HttpStatus.OK);
 	}
-	public ResponseEntity<?> viewbyId(@PathVariable int uid)
+	@RequestMapping(path="/find/{uid}",method=RequestMethod.GET)
+	public ResponseEntity<?> viewbyId(@PathVariable("uid") int uid)
 	{
 		return new ResponseEntity<>(new ResGetID(userdao.findById(uid)),HttpStatus.OK);
 	}
